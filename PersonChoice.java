@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-package PACKAGE_NAME;public class PersonChoice {
-}
-=======
 import java.util.Scanner;
 
 public class PersonChoice implements Runnable{
@@ -20,4 +16,3 @@ public class PersonChoice implements Runnable{
         listener.makeChoise(receiver);
     }
 }
->>>>>>> 3cc0cfa68197ade4e4f90f83d1f7360a62a0e842
