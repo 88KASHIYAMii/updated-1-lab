@@ -3,10 +3,18 @@ import java.util.Scanner;
 public class Listener extends ClientClass{
     Integer _choise;
     static Scanner input = new Scanner(System.in);
+    NodesArray na;
 
+    // делаю метод выбора синхронизед
+    // или мне нужно чтобы этот метод был ран
+    // в отдельных классах создаю потоки и стартую этот метод ран
     public void makeChoise(Integer choise){
+
         this._choise = choise;
         while (_choise != 0){
+
+            System.out.println("running from" + Thread.currentThread().getName());
+
             switch (_choise){
 
                 case 1:{
@@ -32,7 +40,7 @@ public class Listener extends ClientClass{
                         System.out.print(NodesArray.nodes.get(i)._name + " ");
                     }
 
-                    System.out.println("Соединить узлы (Откуда -> Куда)");
+                    System.out.println("Соединить узлы (Откуда [Пробел] Куда)");
                     Integer sender = input.nextInt();
                     Integer receiver = input.nextInt();
 
@@ -68,6 +76,10 @@ public class Listener extends ClientClass{
             }
             _choise = input.nextInt();
         }
+        System.out.println("Поток " + Thread.currentThread().getName() + " завершил свою работу!");
+
+        NodesArray.clearNodes();
+        ConnectionsArray.clearConnections();
     }
 }
 

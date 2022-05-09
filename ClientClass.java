@@ -2,18 +2,23 @@ import java.util.Scanner;
 
 public class ClientClass {
     public static void main(String[] args){
+
+        System.out.print("Сколько юзеров будет использовать приложение? ");
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Выберите действие");
-        System.out.println("1   -   Создать узел");
-        System.out.println("2   -   Создать связи");
-        System.out.println("3   -   Вывод матриц");
-        System.out.println("0   -   Выход");
-
         Integer receiver = scanner.nextInt();
 
-        Listener listen = new Listener();
-        listen.makeChoise(receiver);
+
+        for(int i = 0; i < receiver; i ++){
+
+            PersonChoice person = new PersonChoice();
+            Thread myThread = new Thread(person);
+            myThread.start();
+
+            try{
+                myThread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
-
